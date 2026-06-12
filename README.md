@@ -1,10 +1,10 @@
-# PDL Frontend Code Challenge
+# zvoove Frontend Code Challenge
 
 ## Context
 
 You are building two pages for an HR tech platform. The application uses **React Router v7**, **TypeScript**, and **[@zvoove/unity-ui](https://dub.sh/unity-ui)** as its component library. A deployed reference of the finished result is available so you can see exactly what to aim for:
 
-> **Live reference:** <!-- REPLACE_WITH_DEPLOYED_URL -->
+> **Live reference:** https://zvoove-fe-challenge.vercel.app/
 
 Use the reference as a visual guide. Your implementation does not need to be pixel-perfect, but it should be functionally equivalent and follow the same layout structure.
 
