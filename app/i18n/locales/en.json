@@ -13,5 +13,51 @@
   "user": {
     "guest": "Guest",
     "subtitle": "Code Challenge"
+  },
+  "dashboard": {
+    "pageTitle": "Overview",
+    "pageDescription": "Welcome back — see your team's key metrics and recent activity at a glance.",
+    "announcement": "3 new applications are awaiting review. 2 onboarding processes are due this week.",
+    "actionButtons": {
+      "action1": "Add employee",
+      "action2": "Employees"
+    },
+    "kpis": {
+      "employees": "Active employees",
+      "positions": "Open positions",
+      "onboarding": "In onboarding",
+      "leave": "Pending leave requests"
+    },
+    "activity": {
+      "title": "Recent activity",
+      "refresh": "Refresh",
+      "signedContract": "signed the employment contract",
+      "completedOnboarding": "completed onboarding",
+      "submittedLeave": "submitted a leave request",
+      "newApplication": "submitted a new application"
+    },
+    "time": {
+      "hoursAgo": "hours ago",
+      "yesterday": "yesterday",
+      "daysAgo": "days ago"
+    },
+    "upcoming": {
+      "title": "Upcoming events",
+      "interview": "Interview — Warehouse worker",
+      "probationEnd": "Probation ends — Jonas Abt",
+      "teamMeeting": "HR team meeting",
+      "training": "Safety training"
+    },
+    "tags": {
+      "recruiting": "Recruiting",
+      "hr": "HR",
+      "team": "Team",
+      "learning": "Training"
+    },
+    "onboarding": {
+      "title": "Onboarding progress",
+      "documents": "Documents",
+      "training": "Induction"
+    }
   }
 }

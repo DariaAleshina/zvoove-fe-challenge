@@ -13,5 +13,51 @@
   "user": {
     "guest": "Gast",
     "subtitle": "Code Challenge"
+  },
+  "dashboard": {
+    "pageTitle": "Übersicht",
+    "pageDescription": "Willkommen zurück — hier sehen Sie die wichtigsten Kennzahlen und Aktivitäten Ihres Teams.",
+    "announcement": "3 neue Bewerbungen warten auf Ihre Prüfung. 2 Onboarding-Prozesse sind diese Woche fällig.",
+    "actionButtons": {
+      "action1": "Mitarbeiter anlegen",
+      "action2": "Mitarbeitende"
+    },
+    "kpis": {
+      "employees": "Aktive Mitarbeitende",
+      "positions": "Offene Stellen",
+      "onboarding": "Im Onboarding",
+      "leave": "Offene Urlaubsanträge"
+    },
+    "activity": {
+      "title": "Letzte Aktivitäten",
+      "refresh": "Aktualisieren",
+      "signedContract": "hat den Arbeitsvertrag unterschrieben",
+      "completedOnboarding": "hat das Onboarding abgeschlossen",
+      "submittedLeave": "hat einen Urlaubsantrag eingereicht",
+      "newApplication": "hat eine neue Bewerbung eingereicht"
+    },
+    "time": {
+      "hoursAgo": "vor Stunden",
+      "yesterday": "gestern",
+      "daysAgo": "vor Tagen"
+    },
+    "upcoming": {
+      "title": "Anstehende Termine",
+      "interview": "Vorstellungsgespräch — Lagerist/in",
+      "probationEnd": "Probezeit endet — Jonas Abt",
+      "teamMeeting": "Team-Meeting Personal",
+      "training": "Sicherheitsunterweisung"
+    },
+    "tags": {
+      "recruiting": "Recruiting",
+      "hr": "Personal",
+      "team": "Team",
+      "learning": "Schulung"
+    },
+    "onboarding": {
+      "title": "Onboarding-Fortschritt",
+      "documents": "Dokumente",
+      "training": "Einarbeitung"
+    }
   }
 }
