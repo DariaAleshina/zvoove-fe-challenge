@@ -7,40 +7,67 @@ import {
   Button,
   Skeleton,
   ContentBlock,
+  InfoBox,
+  Card,
 } from '@zvoove/unity-ui';
 
 export default function Home() {
-  const { t } = useTranslation(undefined, { keyPrefix: 'dashboard' });
-
+  const { t } = useTranslation();
   const { dashboard, isLoading, error, refetch } = useDashboard();
 
   // Skeleton for loading state
   if (isLoading) return <DashboardSkeleton />;
 
+  // Error message if error or no dashboard data
+  if (!dashboard || error)
+    return <InfoBox message="Something went wrong. Try again later" />;
+
+  const {
+    kpis,
+    announcementKey,
+    activities,
+    upcomingEvents,
+    onboardingProgress,
+  } = dashboard;
+
   // Dashboard content
   console.log('isLoading: ', isLoading);
   console.log('Dashboard data: ', dashboard);
+
   return (
-    <Stack gap="md" padding="lg">
+    <Stack gap="lg" padding="lg">
       {/* Page header with title, description, and action buttons (link to `/employees`) */}
-      <Stack direction="row" gap="md" align="center" justify="space-between">
-        <Stack>
-          <Typography as="h1">{t('pageTitle')}</Typography>
-          <Typography>{t('pageDescription')}</Typography>
+      <Stack
+        direction={{ minimum: 'column', tablet: 'row' }}
+        gap="md"
+        align="center"
+        justify="space-between"
+      >
+        <Stack gap="sm">
+          <Typography variant="display" size="sm" as="h1">
+            {t('dashboard.pageTitle')}
+          </Typography>
+          <Typography>{t('dashboard.pageDescription')}</Typography>
         </Stack>
-        <Stack direction="row" gap="md">
-          <Button as="a" href="/users">
-            button link 1
+        <Stack direction="row" gap="sm" width="max-content" align="flex-start">
+          <Button size="md" icon="add" as="a" href="/users" variant="outlined">
+            {t('dashboard.actionButtons.action1')}
           </Button>
-          <Button as="a" href="/users">
-            button link 2
+          <Button size="md" icon="users" as="a" href="/users">
+            {t('dashboard.actionButtons.action2')}
           </Button>
         </Stack>
       </Stack>
 
       {/* Info banner (announcement) */}
+      <InfoBox message={t(announcementKey)} variant="subtle" icon="info" />
 
       {/* A responsive grid of KPI cards (4 columns on desktop, 2 on tablet, 1 on mobile) showing: */}
+      <Grid columns={{ minimum: 1, tablet: 2, desktop: 4 }} gap="md">
+        {kpis.map(kpi => (
+          <Card variant="outlined">Content here</Card>
+        ))}
+      </Grid>
       {/* Label, value, trend change, and an icon per KPI */}
       {/* - An activity feed section using the `List` component, showing recent employee actions with avatars */}
       {/* - An upcoming events section using the `List` component, showing dates and category tags */}
