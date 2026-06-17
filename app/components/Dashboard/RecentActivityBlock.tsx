@@ -48,21 +48,21 @@ export function RecentActivityBlock({
       <List
         showDividers={true}
         width="100%"
-        items={activities.map(a => ({
-          id: a.id,
+        items={activities.map(activity => ({
+          id: activity.id,
           content: (
             <Stack direction="row" gap="md" align="center">
-              <Avatar type="initials" name={a.name} size="sm" />
+              <Avatar type="initials" name={activity.name} size="sm" />
               <Stack direction="column" align="flex-start" gap="none">
                 <Typography variant="body" size="md">
-                  {a.name} {t(a.actionKey)}
+                  {activity.name} {t(activity.actionKey)}
                 </Typography>
                 <Typography
                   variant="label"
                   size="sm"
                   color="on-surface-variant"
                 >
-                  {t(a.timeKey)}
+                  {t(activity.timeKey)}
                 </Typography>
               </Stack>
             </Stack>

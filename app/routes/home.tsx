@@ -1,6 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useDashboard } from '../mocked/hooks/useDashboard';
-import { DashboardSkeleton, RecentActivityBlock, UpcomingEventsBlock } from '../components';
+import {
+  DashboardSkeleton,
+  OnboardingProgressBlock,
+  RecentActivityBlock,
+  UpcomingEventsBlock,
+} from '../components';
 import {
   Stack,
   Grid,
@@ -107,11 +112,10 @@ export default function Home() {
             {/* - An upcoming events section using the `List` component, showing dates and category tags */}
             <UpcomingEventsBlock events={upcomingEvents} />
 
-            {/* - An onboarding progress section with progress bars */}
+            <OnboardingProgressBlock steps={onboardingProgress} />
           </Stack>
         </Grid.Item>
       </Grid>
     </Stack>
   );
 }
-
