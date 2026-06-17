@@ -37,9 +37,10 @@
       "newApplication": "submitted a new application"
     },
     "time": {
-      "hoursAgo": "hours ago",
+      "hoursAgo": "2 hours ago",
       "yesterday": "yesterday",
-      "daysAgo": "days ago"
+      "daysAgo": "2 days ago",
+      "hoursAgo2": "5 hours ago"
     },
     "upcoming": {
       "title": "Upcoming events",

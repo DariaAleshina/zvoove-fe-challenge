@@ -1,0 +1,1 @@
+export { RecentActivityBlock } from './RecentActivityBlock';

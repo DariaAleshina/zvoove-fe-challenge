@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useDashboard } from '../mocked/hooks/useDashboard';
+import { RecentActivityBlock } from '../components';
 import {
   Stack,
   Grid,
@@ -9,6 +10,7 @@ import {
   ContentBlock,
   InfoBox,
   Card,
+  Icon,
 } from '@zvoove/unity-ui';
 
 export default function Home() {
@@ -23,8 +25,8 @@ export default function Home() {
     return <InfoBox message="Something went wrong. Try again later" />;
 
   const {
-    kpis,
     announcementKey,
+    kpis,
     activities,
     upcomingEvents,
     onboardingProgress,
@@ -60,15 +62,47 @@ export default function Home() {
       </Stack>
 
       {/* Info banner (announcement) */}
-      <InfoBox message={t(announcementKey)} variant="subtle" icon="info" />
+      <InfoBox
+        message={t(announcementKey)}
+        variant="subtle"
+        icon="info"
+        elevated={false}
+      />
 
       {/* A responsive grid of KPI cards (4 columns on desktop, 2 on tablet, 1 on mobile) showing: */}
+      {/* Label, value, trend change, and an icon per KPI */}
       <Grid columns={{ minimum: 1, tablet: 2, desktop: 4 }} gap="md">
         {kpis.map(kpi => (
-          <Card variant="outlined">Content here</Card>
+          <Card variant="outlined">
+            <Stack gap="sm">
+              <Stack direction="row" align="center" justify="space-between">
+                <Typography
+                  variant="label"
+                  size="sm"
+                  color="on-surface-variant"
+                >
+                  {t(kpi.labelKey)}
+                </Typography>
+                <Icon name={kpi.icon} color="primary" size="md" />
+              </Stack>
+              <Stack direction="row" gap="sm">
+                <Typography variant="display" size="sm">
+                  {kpi.value}
+                </Typography>
+
+                <Typography as="span" color={kpi.changeColor} size="sm">
+                  {kpi.change}
+                </Typography>
+              </Stack>
+            </Stack>
+          </Card>
         ))}
       </Grid>
-      {/* Label, value, trend change, and an icon per KPI */}
+
+      <Grid columns={{ minimum: 1, tablet: 2, desktop: 3 }} gap="md">
+        <RecentActivityBlock activities={activities} onRefresh={refetch} />
+      </Grid>
+
       {/* - An activity feed section using the `List` component, showing recent employee actions with avatars */}
       {/* - An upcoming events section using the `List` component, showing dates and category tags */}
       {/* - An onboarding progress section with progress bars */}

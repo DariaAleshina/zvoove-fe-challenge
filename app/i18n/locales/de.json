@@ -37,9 +37,10 @@
       "newApplication": "hat eine neue Bewerbung eingereicht"
     },
     "time": {
-      "hoursAgo": "vor Stunden",
+      "hoursAgo": "vor 2 Stunden",
       "yesterday": "gestern",
-      "daysAgo": "vor Tagen"
+      "daysAgo": "vor 2 Tagen",
+      "hoursAgo2": "vor 5 Stunden"
     },
     "upcoming": {
       "title": "Anstehende Termine",
