@@ -1,2 +1,2 @@
 export { Layout } from "./Layout";
-export { DashboardSkeleton, OnboardingProgressBlock, RecentActivityBlock, UpcomingEventsBlock } from "./Dashboard";
+export { DashboardSkeleton, KpiBlock, OnboardingProgressBlock, RecentActivityBlock, UpcomingEventsBlock } from "./Dashboard";
