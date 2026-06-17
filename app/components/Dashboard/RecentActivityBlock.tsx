@@ -6,6 +6,7 @@ import {
   List,
   Stack,
   Typography,
+  Icon,
 } from '@zvoove/unity-ui';
 import type { DashboardActivity } from '../../mocked/types/dashboard';
 
@@ -31,10 +32,14 @@ export function RecentActivityBlock({
           justify="space-between"
           padding="md"
         >
-          <Typography variant="headline" size="sm" as="h2">
-            {t('dashboard.activity.title')}
-          </Typography>
-          <Button variant="text" icon="refresh" onClick={onRefresh}>
+          <Stack direction="row" align="center" gap="sm">
+            <Icon name="remark" size="md" />
+            <Typography variant="title" size="lg" as="h2">
+              {t('dashboard.activity.title')}
+            </Typography>
+          </Stack>
+          <Button variant="text" onClick={onRefresh}>
+            <Icon name="refresh" size="md" />
             {t('dashboard.activity.refresh')}
           </Button>
         </Stack>
@@ -46,9 +51,9 @@ export function RecentActivityBlock({
         items={activities.map(a => ({
           id: a.id,
           content: (
-            <Stack direction="row" gap="md" align="center" padding="md">
-              <Avatar name={a.name} size="md" />
-              <Stack direction="column" gap="xs2" align="flex-start">
+            <Stack direction="row" gap="md" align="center">
+              <Avatar type="initials" name={a.name} size="sm" />
+              <Stack direction="column" align="flex-start" gap="none">
                 <Typography variant="body" size="md">
                   {a.name} {t(a.actionKey)}
                 </Typography>
