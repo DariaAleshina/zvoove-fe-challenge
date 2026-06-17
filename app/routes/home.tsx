@@ -30,7 +30,7 @@ export default function Home() {
       <Stack
         direction={{ minimum: 'column', tablet: 'row' }}
         gap="md"
-        align="center"
+        align={{ minimum: 'flex-start', tablet: 'center' }}
         justify="space-between"
       >
         <Stack gap="sm">
@@ -39,7 +39,7 @@ export default function Home() {
           </Typography>
           <Typography>{t('dashboard.pageDescription')}</Typography>
         </Stack>
-        <Stack direction="row" gap="sm" width="max-content" align="flex-start">
+        <Stack direction="row" gap="sm" width="max-content">
           <Button size="md" icon="add" as="a" href="/users" variant="outlined">
             {t('dashboard.actionButtons.action1')}
           </Button>
@@ -49,6 +49,7 @@ export default function Home() {
         </Stack>
       </Stack>
 
+      {/* TODO: make annoucement message dynamic */}
       <InfoBox
         message={t(announcementKey)}
         variant="subtle"
