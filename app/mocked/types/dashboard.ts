@@ -1,11 +1,11 @@
-import type { CommonIconNames } from "@zvoove/unity-ui";
+import type { CommonIconNames } from '@zvoove/unity-ui';
 
 export type DashboardKpi = {
   id: string;
   labelKey: string;
   value: string;
   change: string;
-  changeColor: "green" | "yellow" | "steel-blue" | "error";
+  changeColor: 'dark-green' | 'dark-yellow' | 'dark-steel-blue' | 'error';
   icon: CommonIconNames;
 };
 
@@ -21,7 +21,7 @@ export type DashboardUpcomingEvent = {
   titleKey: string;
   date: string;
   tagLabelKey: string;
-  tagColor: "green" | "yellow" | "steel-blue" | "pink";
+  tagColor: 'green' | 'yellow' | 'steel-blue' | 'pink';
 };
 
 export type DashboardOnboardingStep = {
