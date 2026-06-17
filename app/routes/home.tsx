@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useDashboard } from '../mocked/hooks/useDashboard';
-import { RecentActivityBlock, UpcomingEventsBlock } from '../components';
+import { DashboardSkeleton, RecentActivityBlock, UpcomingEventsBlock } from '../components';
 import {
   Stack,
   Grid,
   Typography,
   Button,
-  Skeleton,
   InfoBox,
   Card,
   Icon,
@@ -116,17 +115,3 @@ export default function Home() {
   );
 }
 
-function DashboardSkeleton() {
-  return (
-    <Stack gap="md" padding="lg">
-      <Skeleton width="40%" height={50} />
-      <Skeleton height={60} />
-      <Grid columns={4} gap="md">
-        <Skeleton height={100} />
-        <Skeleton height={100} />
-        <Skeleton height={100} />
-        <Skeleton height={100} />
-      </Grid>
-    </Stack>
-  );
-}
