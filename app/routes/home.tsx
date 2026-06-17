@@ -7,7 +7,6 @@ import {
   Typography,
   Button,
   Skeleton,
-  ContentBlock,
   InfoBox,
   Card,
   Icon,
