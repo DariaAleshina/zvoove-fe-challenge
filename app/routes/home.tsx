@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useDashboard } from '../mocked/hooks/useDashboard';
-import { RecentActivityBlock } from '../components';
+import { RecentActivityBlock, UpcomingEventsBlock } from '../components';
 import {
   Stack,
   Grid,
@@ -99,13 +99,20 @@ export default function Home() {
         ))}
       </Grid>
 
-      <Grid columns={{ minimum: 1, tablet: 2, desktop: 3 }} gap="md">
-        <RecentActivityBlock activities={activities} onRefresh={refetch} />
-      </Grid>
-
       {/* - An activity feed section using the `List` component, showing recent employee actions with avatars */}
-      {/* - An upcoming events section using the `List` component, showing dates and category tags */}
-      {/* - An onboarding progress section with progress bars */}
+      <Grid columns={{ minimum: 1, tablet: 2, desktop: 3 }} gap="md">
+        <Grid.Item colSpan={2}>
+          <RecentActivityBlock activities={activities} onRefresh={refetch} />
+        </Grid.Item>
+        <Grid.Item colSpan={1}>
+          <Stack gap="lg">
+            {/* - An upcoming events section using the `List` component, showing dates and category tags */}
+            <UpcomingEventsBlock events={upcomingEvents} />
+
+            {/* - An onboarding progress section with progress bars */}
+          </Stack>
+        </Grid.Item>
+      </Grid>
     </Stack>
   );
 }

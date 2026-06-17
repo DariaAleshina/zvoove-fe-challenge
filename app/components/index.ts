@@ -1,2 +1,2 @@
 export { Layout } from "./Layout";
-export { RecentActivityBlock } from "./Dashboard";
+export { RecentActivityBlock, UpcomingEventsBlock } from "./Dashboard";
