@@ -4,10 +4,11 @@ import type { EmployeeFilters } from '../../mocked/types/employee';
 
 type Props = {
   filters: EmployeeFilters;
+  activeFilters: Record<keyof EmployeeFilters, string>;
   handleFilterClick: (filterKey: keyof EmployeeFilters, value: string) => void;
 };
 
-export function EmployeesTableFilters({ filters, handleFilterClick }: Props) {
+export function EmployeesTableFilters({ filters, activeFilters, handleFilterClick }: Props) {
   const FILTER_CHIP_LABELS: Record<keyof EmployeeFilters, string> = {
     beruf: 'Beruf',
     plz: 'Postleitzahl',
@@ -44,12 +45,14 @@ export function EmployeesTableFilters({ filters, handleFilterClick }: Props) {
           const items: PopUpMenuItem[] = filters[filterKey].map(opt => ({
             id: opt.value,
             label: opt.label,
-            onClick: () => handleFilterClick(filterKey, opt.value),
           }));
           return (
             <PopUpMenu
               key={filterKey}
               items={items}
+              selectable="single"
+              selectedItem={activeFilters[filterKey]}
+              onItemClick={item => handleFilterClick(filterKey, item.id)}
               placement="bottom-left"
               density="-4"
             >

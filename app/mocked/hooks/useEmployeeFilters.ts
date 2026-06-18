@@ -12,6 +12,7 @@ interface ActiveFilters {
 
 interface UseEmployeeFiltersReturn {
   handleFilterClick: (filterKey: keyof ActiveFilters, value: string) => void;
+  activeFilters: ActiveFilters;
 }
 
 const INITIAL_FILTERS: ActiveFilters = {
@@ -38,5 +39,5 @@ export function useEmployeeFilters(
 
   console.log('activeFilters: ', activeFilters);
 
-  return { handleFilterClick };
+  return { handleFilterClick, activeFilters };
 }
