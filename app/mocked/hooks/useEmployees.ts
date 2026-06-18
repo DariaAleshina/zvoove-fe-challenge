@@ -8,7 +8,7 @@ import {
 
 type UseEmployeesResult = {
   employees: Employee[];
-  filters: EmployeeFilters | null;
+  filters: EmployeeFilters;
   isLoading: boolean;
   error: Error | null;
   refetch: () => void;
