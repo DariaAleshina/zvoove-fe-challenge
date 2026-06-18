@@ -4,6 +4,7 @@ import { NameCell } from './NameCell';
 import { StatusCell } from './StatusCell';
 import { ActionsCell } from './ActionsCell';
 import { EmployeeTableActions } from './EmployeeTableActions';
+import { EmployeesTableFilters } from './EmployeesTableFilters';
 import { useState } from 'react';
 
 type Props = { employees: Employee[] };
@@ -47,9 +48,10 @@ export function EmployeesTable({ employees }: Props) {
   return (
     <Table
       title={tableTitle}
+      actions={<EmployeeTableActions />}
+      filters={<EmployeesTableFilters />}
       columns={columns}
       data={data}
-      actions={<EmployeeTableActions />}
     />
   );
 }
