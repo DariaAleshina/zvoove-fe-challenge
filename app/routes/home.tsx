@@ -33,13 +33,15 @@ export default function Home() {
         align={{ minimum: 'flex-start', tablet: 'center' }}
         justify="space-between"
       >
+        {/* Page Title */}
         <Stack gap="sm">
           <Typography variant="display" size="sm" as="h1">
             {t('dashboard.pageTitle')}
           </Typography>
           <Typography>{t('dashboard.pageDescription')}</Typography>
         </Stack>
-        <Stack direction="row" gap="sm" width="max-content">
+        {/* Action Buttons */}
+        <Stack direction="row" wrap="wrap" gap="sm">
           <Button size="md" icon="add" as="a" href="/users" variant="outlined">
             {t('dashboard.actionButtons.action1')}
           </Button>
