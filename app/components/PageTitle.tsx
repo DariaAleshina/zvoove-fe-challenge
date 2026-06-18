@@ -9,8 +9,10 @@ interface PageTitleProps {
 export function PageTitle({ pageTitle, pageDescription }: PageTitleProps) {
   const { t } = useTranslation();
   return (
-    <Stack gap="sm">
-      <Typography variant="display" size="sm" as="h1">{t(pageTitle)}</Typography>
+    <Stack gap="xs">
+      <Typography variant="display" size="sm" as="h1">
+        {t(pageTitle)}
+      </Typography>
       <Typography>{t(pageDescription)}</Typography>
     </Stack>
   );
