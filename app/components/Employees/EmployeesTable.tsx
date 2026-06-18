@@ -10,10 +10,9 @@ import { useEmployeeFilters } from '~/mocked/hooks/useEmployeeFilters';
 type Props = { employees: Employee[]; filters: EmployeeFilters };
 
 export function EmployeesTable({ employees, filters }: Props) {
-  const { handleFilterClick, activeFilters, handleSearchChange } = useEmployeeFilters(employees);
+  const { handleFilterClick, activeFilters, handleSearchChange, filteredEmployees } = useEmployeeFilters(employees);
 
-  // TODO: replace with filtered dada
-  const tableTitle = `Alle Mitarbeitenden (${employees.length})`;
+  const tableTitle = `Alle Mitarbeitenden (${filteredEmployees.length})`;
 
   const columns = [
     { id: 'nachname', label: 'Name', orderable: true },
@@ -27,8 +26,7 @@ export function EmployeesTable({ employees, filters }: Props) {
     { id: 'aktionen', label: 'Aktionen', align: 'right' as const },
   ];
 
-  // TODO: replace with filtered data
-  const data = employees.map(emp => ({
+  const data = filteredEmployees.map(emp => ({
     id: emp.id,
     nachname: <NameCell nachname={emp.nachname} image={emp.image ?? null} />,
     vorname: emp.vorname,

@@ -15,6 +15,7 @@ interface UseEmployeeFiltersReturn {
   handleFilterClick: (filterKey: keyof ActiveFilters, value: string) => void;
   activeFilters: ActiveFilters;
   handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  filteredEmployees: Employee[];
 }
 
 const INITIAL_FILTERS: ActiveFilters = {
@@ -39,11 +40,43 @@ export function useEmployeeFilters(
     }));
   };
 
-  console.log('activeFilters: ', activeFilters);
-
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setActiveFilters(prev => ({ ...prev, search: e.target.value }));
   };
 
-  return { handleFilterClick, activeFilters, handleSearchChange };
+  const filteredEmployees = useMemo(() => {
+    return employees.filter(emp => {
+      if (activeFilters.search) {
+        const q = activeFilters.search.toLowerCase();
+        if (
+          !emp.nachname.toLowerCase().includes(q) &&
+          !emp.vorname.toLowerCase().includes(q)
+        )
+          return false;
+      }
+      if (activeFilters.beruf && emp.beruf !== activeFilters.beruf)
+        return false;
+      if (activeFilters.plz && emp.plz !== activeFilters.plz) return false;
+      if (activeFilters.status && emp.status !== activeFilters.status)
+        return false;
+      if (
+        activeFilters.eintritt &&
+        emp.eintritt.split('.')[2] !== activeFilters.eintritt
+      )
+        return false;
+      if (
+        activeFilters.ueberlassen &&
+        emp.ueberlassen.split('.')[2] !== activeFilters.ueberlassen
+      )
+        return false;
+      return true;
+    });
+  }, [employees, activeFilters]);
+
+  return {
+    handleFilterClick,
+    activeFilters,
+    handleSearchChange,
+    filteredEmployees,
+  };
 }
