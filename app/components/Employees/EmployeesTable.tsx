@@ -4,11 +4,14 @@ import { NameCell } from './NameCell';
 import { StatusCell } from './StatusCell';
 import { ActionsCell } from './ActionsCell';
 import { EmployeeTableActions } from './EmployeeTableActions';
+import { useState } from 'react';
 
 type Props = { employees: Employee[] };
 
 export function EmployeesTable({ employees }: Props) {
-  const tableTitle = `Alle Mitarbeitenden (${employees.length})`;
+  const [filteredEmployees, setFilteredEmployees] = useState(employees);
+
+  const tableTitle = `Alle Mitarbeitenden (${filteredEmployees.length})`;
 
   const columns = [
     { id: 'nachname', label: 'Name', orderable: true },
@@ -42,6 +45,11 @@ export function EmployeesTable({ employees }: Props) {
   }));
 
   return (
-    <Table title={tableTitle} columns={columns} data={data} actions={<EmployeeTableActions />} />
+    <Table
+      title={tableTitle}
+      columns={columns}
+      data={data}
+      actions={<EmployeeTableActions />}
+    />
   );
 }
