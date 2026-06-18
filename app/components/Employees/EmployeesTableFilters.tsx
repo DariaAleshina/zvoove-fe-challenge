@@ -2,9 +2,12 @@ import { Button, Chip, PopUpMenu, Stack, TextField } from '@zvoove/unity-ui';
 import type { PopUpMenuItem } from '@zvoove/unity-ui';
 import type { EmployeeFilters } from '../../mocked/types/employee';
 
-type Props = { filters: EmployeeFilters };
+type Props = {
+  filters: EmployeeFilters;
+  handleFilterClick: (filterKey: keyof EmployeeFilters, value: string) => void;
+};
 
-export function EmployeesTableFilters({ filters }: Props) {
+export function EmployeesTableFilters({ filters, handleFilterClick }: Props) {
   const FILTER_CHIP_LABELS: Record<keyof EmployeeFilters, string> = {
     beruf: 'Beruf',
     plz: 'Postleitzahl',
@@ -41,7 +44,7 @@ export function EmployeesTableFilters({ filters }: Props) {
           const items: PopUpMenuItem[] = filters[filterKey].map(opt => ({
             id: opt.value,
             label: opt.label,
-            onClick: () => {},
+            onClick: () => handleFilterClick(filterKey, opt.value),
           }));
           return (
             <PopUpMenu

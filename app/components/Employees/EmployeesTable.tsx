@@ -5,14 +5,12 @@ import { StatusCell } from './StatusCell';
 import { ActionsCell } from './ActionsCell';
 import { EmployeeTableActions } from './EmployeeTableActions';
 import { EmployeesTableFilters } from './EmployeesTableFilters';
-import { useState } from 'react';
+import { useEmployeeFilters } from '~/mocked/hooks/useEmployeeFilters';
 
 type Props = { employees: Employee[]; filters: EmployeeFilters | null };
 
 export function EmployeesTable({ employees, filters }: Props) {
-  const [activeFilters, setActiveFilters] = useState(null);
-
-  let filteredEmployees = { ...employees };
+  const { handleFilterClick } = useEmployeeFilters(employees);
 
   // TODO: replace with filtered dada
   const tableTitle = `Alle Mitarbeitenden (${employees.length})`;
@@ -47,7 +45,7 @@ export function EmployeesTable({ employees, filters }: Props) {
     <Table
       title={tableTitle}
       actions={<EmployeeTableActions />}
-      filters={filters && <EmployeesTableFilters filters={filters} />}
+      filters={filters && <EmployeesTableFilters filters={filters} handleFilterClick={handleFilterClick} />}
       columns={columns}
       data={data}
     />
