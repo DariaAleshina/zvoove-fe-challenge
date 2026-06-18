@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { useEmployees } from '../mocked/hooks/useEmployees';
 import { EmployeesSkeleton } from '~/components/Employees';
+import { PageTitle } from '~/components';
 
 import {
   Stack,
@@ -16,10 +18,21 @@ import {
 
 export default function Users() {
   const { employees, isLoading, error, refetch } = useEmployees();
+  const { t } = useTranslation();
 
   if (isLoading) return <EmployeesSkeleton />;
   if (error) return <InfoBox message={error.message} />;
   if (!employees) return <InfoBox message="No data available" />;
 
-  return null;
+  return (
+    <Stack gap="lg" padding="lg">
+      <PageTitle
+        pageTitle="employees.pageTitle"
+        pageDescription="employees.pageDescription"
+      />
+    </Stack>
+    <Table>
+      
+    </Table>
+  );
 }

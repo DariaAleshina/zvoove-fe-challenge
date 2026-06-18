@@ -60,5 +60,9 @@
       "documents": "Documents",
       "training": "Induction"
     }
+  },
+  "employees": {
+    "pageTitle": "Employees",
+    "pageDescription": "View and manage all employees here."
   }
 }

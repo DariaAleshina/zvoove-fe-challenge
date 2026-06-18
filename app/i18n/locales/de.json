@@ -60,5 +60,9 @@
       "documents": "Dokumente",
       "training": "Einarbeitung"
     }
+  },
+  "employees": {
+    "pageTitle": "Mitarbeitende",
+    "pageDescription": "Hier können Sie alle Mitarbeitenden anzeigen und verwalten."
   }
 }
