@@ -4028,7 +4028,7 @@ function NameCell({ nachname, avatarType, image }: NameCellProps) {
 
 This may or may not be related to the current task.</ide_selection>
 
-lets extract this component in a seperate file as well
+lets extract this component in a separate file as well
 
 ---
 
@@ -4859,7 +4859,7 @@ Clean. The `more-vertical` button in the table header now opens a `PopUpMenu` wi
 
 This may or may not be related to the current task.</ide_selection>
 
-lets extract this component into a seperate file and call it EmployeeTableActions
+lets extract this component into a separate file and call it EmployeeTableActions
 
 ---
 
@@ -5603,7 +5603,7 @@ function uniqueYearOptions(
 
 This may or may not be related to the current task.</ide_selection>
 
-move these helper fuctions in util folter ->  filter file (propose other way if more appropreate),
+move these helper functions in util folder ->  filter file (propose other way if more appropriate),
 
 ---
 
@@ -7740,7 +7740,7 @@ Nothing missing for Task 3.
 
 This may or may not be related to the current task.</ide_selection>
 
-check acceptance critria: is smth missing?
+check acceptance criteria: is smth missing?
 
 ---
 
