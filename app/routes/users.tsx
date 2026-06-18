@@ -24,14 +24,12 @@ export default function Users() {
   if (!employees) return <InfoBox message="No data available" />;
 
   return (
-    <>
-      <Stack gap="lg" padding="lg">
-        <PageTitle
-          pageTitle="employees.pageTitle"
-          pageDescription="employees.pageDescription"
-        />
-      </Stack>
+    <Stack gap="lg" padding="lg">
+      <PageTitle
+        pageTitle="employees.pageTitle"
+        pageDescription="employees.pageDescription"
+      />
       <EmployeesTable employees={employees} />
-    </>
+    </Stack>
   );
 }
