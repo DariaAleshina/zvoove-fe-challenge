@@ -2,14 +2,17 @@ import { Avatar, Stack } from '@zvoove/unity-ui';
 
 export type NameCellProps = {
   nachname: string;
-  avatarType: 'image' | 'avatar';
   image?: string | null;
 };
 
-export function NameCell({ nachname, avatarType, image }: NameCellProps) {
+export function NameCell({ nachname, image }: NameCellProps) {
   return (
     <Stack direction="row" align="center" gap="xs">
-      <Avatar size="sm" type={avatarType} {...(image && { image })} />
+      <Avatar
+        size="sm"
+        type={image ? 'image' : 'avatar'}
+        {...(image && { image })}
+      />
       {nachname}
     </Stack>
   );
