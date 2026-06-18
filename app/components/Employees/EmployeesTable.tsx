@@ -1,33 +1,47 @@
 import { Table } from '@zvoove/unity-ui';
 import type { Employee } from '~/mocked/types/employee';
+import { NameCell } from './NameCell';
+import { StatusCell } from './StatusCell';
+import { ActionsCell } from './ActionsCell';
+import { EmployeeTableActions } from './EmployeeTableActions';
 
 type Props = { employees: Employee[] };
 
 export function EmployeesTable({ employees }: Props) {
+  const tableTitle = `Alle Mitarbeitenden (${employees.length})`;
+
   const columns = [
-    { id: 'nachname',    label: 'Name',           orderable: true },
-    { id: 'vorname',     label: 'Vorname' },
-    { id: 'beruf',       label: 'Beruf' },
-    { id: 'telefon',     label: 'Telefonnummer' },
-    { id: 'plz',         label: 'Postleitzahl' },
-    { id: 'eintritt',    label: 'Eintrittsdatum' },
+    { id: 'nachname', label: 'Name', orderable: true },
+    { id: 'vorname', label: 'Vorname' },
+    { id: 'beruf', label: 'Beruf' },
+    { id: 'telefon', label: 'Telefonnummer' },
+    { id: 'plz', label: 'Postleitzahl' },
+    { id: 'eintritt', label: 'Eintrittsdatum' },
     { id: 'ueberlassen', label: 'Überlassen bis' },
-    { id: 'status',      label: 'Status' },
-    { id: 'aktionen',    label: 'Aktionen', align: 'right' as const },
+    { id: 'status', label: 'Status' },
+    { id: 'aktionen', label: 'Aktionen', align: 'right' as const },
   ];
 
   const data = employees.map(emp => ({
     id: emp.id,
-    nachname: emp.nachname,
+    nachname: (
+      <NameCell
+        nachname={emp.nachname}
+        avatarType={emp.image ? 'image' : 'avatar'}
+        image={emp.image ?? null}
+      />
+    ),
     vorname: emp.vorname,
     beruf: emp.beruf,
     telefon: emp.telefon,
     plz: emp.plz,
     eintritt: emp.eintritt,
     ueberlassen: emp.ueberlassen,
-    status: emp.status,
-    aktionen: null,
+    status: <StatusCell status={emp.status} />,
+    aktionen: <ActionsCell />,
   }));
 
-  return <Table columns={columns} data={data} />;
+  return (
+    <Table title={tableTitle} columns={columns} data={data} actions={<EmployeeTableActions />} />
+  );
 }
