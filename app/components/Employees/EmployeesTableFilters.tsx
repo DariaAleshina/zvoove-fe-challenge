@@ -1,19 +1,18 @@
 import { Button, Chip, PopUpMenu, Stack, TextField } from '@zvoove/unity-ui';
 import type { PopUpMenuItem } from '@zvoove/unity-ui';
+import type { EmployeeFilters } from '../../mocked/types/employee';
 
-const PLACEHOLDER_ITEMS: PopUpMenuItem[] = [
-  { id: 'placeholder', label: '...' },
-];
+type Props = { filters: EmployeeFilters };
 
-const FILTER_CHIPS = [
-  { id: 'beruf', label: 'Beruf' },
-  { id: 'plz', label: 'Postleitzahl' },
-  { id: 'eintritt', label: 'Eintrittsdatum' },
-  { id: 'ueberlassen', label: 'Überlassen bis' },
-  { id: 'status', label: 'Status' },
-];
+export function EmployeesTableFilters({ filters }: Props) {
+  const FILTER_CHIP_LABELS: Record<keyof EmployeeFilters, string> = {
+    beruf: 'Beruf',
+    plz: 'Postleitzahl',
+    eintritt: 'Eintrittsdatum',
+    ueberlassen: 'Überlassen bis',
+    status: 'Status',
+  };
 
-export function EmployeesTableFilters() {
   return (
     <Stack
       direction={{ minimum: 'column', desktop: 'row' }}
@@ -38,15 +37,27 @@ export function EmployeesTableFilters() {
             density="-4"
           />
         </div>
-        {FILTER_CHIPS.map(chip => (
-          <PopUpMenu
-            key={chip.id}
-            items={PLACEHOLDER_ITEMS}
-            placement="bottom-left"
-          >
-            <Chip label={chip.label} type="filter" showDropdownIcon={true} />
-          </PopUpMenu>
-        ))}
+        {(Object.keys(filters) as (keyof EmployeeFilters)[]).map(filterKey => {
+          const items: PopUpMenuItem[] = filters[filterKey].map(opt => ({
+            id: opt.value,
+            label: opt.label,
+            onClick: () => {},
+          }));
+          return (
+            <PopUpMenu
+              key={filterKey}
+              items={items}
+              placement="bottom-left"
+              density="-4"
+            >
+              <Chip
+                label={FILTER_CHIP_LABELS[filterKey as keyof EmployeeFilters]}
+                type="filter"
+                showDropdownIcon={true}
+              />
+            </PopUpMenu>
+          );
+        })}
       </Stack>
       <Button variant="filled" size="md">
         Mitarbeiter anlegen

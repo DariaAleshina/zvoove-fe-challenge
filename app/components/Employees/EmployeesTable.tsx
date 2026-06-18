@@ -1,18 +1,31 @@
 import { Table } from '@zvoove/unity-ui';
-import type { Employee } from '~/mocked/types/employee';
+import type { Employee, EmployeeFilters } from '~/mocked/types/employee';
 import { NameCell } from './NameCell';
 import { StatusCell } from './StatusCell';
 import { ActionsCell } from './ActionsCell';
 import { EmployeeTableActions } from './EmployeeTableActions';
 import { EmployeesTableFilters } from './EmployeesTableFilters';
+import { uniqueOptions, uniqueYearOptions } from './filterUtils';
 import { useState } from 'react';
 
 type Props = { employees: Employee[] };
 
 export function EmployeesTable({ employees }: Props) {
-  const [filteredEmployees, setFilteredEmployees] = useState(employees);
+  const [filters, setFilters] = useState(null);
 
+  const filteredEmployees = () => {
+    return employees;
+  };
   const tableTitle = `Alle Mitarbeitenden (${filteredEmployees.length})`;
+
+  // Filter Section data prep (from raw employees data)
+  const filterOptions: EmployeeFilters = {
+    beruf: uniqueOptions(employees, 'beruf'),
+    plz: uniqueOptions(employees, 'plz'),
+    eintritt: uniqueYearOptions(employees, 'eintritt'),
+    ueberlassen: uniqueYearOptions(employees, 'ueberlassen'),
+    status: uniqueOptions(employees, 'status'),
+  };
 
   const columns = [
     { id: 'nachname', label: 'Name', orderable: true },
@@ -28,13 +41,7 @@ export function EmployeesTable({ employees }: Props) {
 
   const data = employees.map(emp => ({
     id: emp.id,
-    nachname: (
-      <NameCell
-        nachname={emp.nachname}
-        avatarType={emp.image ? 'image' : 'avatar'}
-        image={emp.image ?? null}
-      />
-    ),
+    nachname: <NameCell nachname={emp.nachname} image={emp.image ?? null} />,
     vorname: emp.vorname,
     beruf: emp.beruf,
     telefon: emp.telefon,
@@ -49,7 +56,7 @@ export function EmployeesTable({ employees }: Props) {
     <Table
       title={tableTitle}
       actions={<EmployeeTableActions />}
-      filters={<EmployeesTableFilters />}
+      filters={<EmployeesTableFilters filters={filterOptions} />}
       columns={columns}
       data={data}
     />
