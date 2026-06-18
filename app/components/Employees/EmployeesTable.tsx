@@ -5,27 +5,17 @@ import { StatusCell } from './StatusCell';
 import { ActionsCell } from './ActionsCell';
 import { EmployeeTableActions } from './EmployeeTableActions';
 import { EmployeesTableFilters } from './EmployeesTableFilters';
-import { uniqueOptions, uniqueYearOptions } from './filterUtils';
 import { useState } from 'react';
 
-type Props = { employees: Employee[] };
+type Props = { employees: Employee[]; filters: EmployeeFilters | null };
 
-export function EmployeesTable({ employees }: Props) {
-  const [filters, setFilters] = useState(null);
+export function EmployeesTable({ employees, filters }: Props) {
+  const [activeFilters, setActiveFilters] = useState(null);
 
-  const filteredEmployees = () => {
-    return employees;
-  };
-  const tableTitle = `Alle Mitarbeitenden (${filteredEmployees.length})`;
+  let filteredEmployees = { ...employees };
 
-  // Filter Section data prep (from raw employees data)
-  const filterOptions: EmployeeFilters = {
-    beruf: uniqueOptions(employees, 'beruf'),
-    plz: uniqueOptions(employees, 'plz'),
-    eintritt: uniqueYearOptions(employees, 'eintritt'),
-    ueberlassen: uniqueYearOptions(employees, 'ueberlassen'),
-    status: uniqueOptions(employees, 'status'),
-  };
+  // TODO: replace with filtered dada
+  const tableTitle = `Alle Mitarbeitenden (${employees.length})`;
 
   const columns = [
     { id: 'nachname', label: 'Name', orderable: true },
@@ -39,6 +29,7 @@ export function EmployeesTable({ employees }: Props) {
     { id: 'aktionen', label: 'Aktionen', align: 'right' as const },
   ];
 
+  // TODO: replace with filtered data
   const data = employees.map(emp => ({
     id: emp.id,
     nachname: <NameCell nachname={emp.nachname} image={emp.image ?? null} />,
@@ -56,7 +47,7 @@ export function EmployeesTable({ employees }: Props) {
     <Table
       title={tableTitle}
       actions={<EmployeeTableActions />}
-      filters={<EmployeesTableFilters filters={filterOptions} />}
+      filters={filters && <EmployeesTableFilters filters={filters} />}
       columns={columns}
       data={data}
     />

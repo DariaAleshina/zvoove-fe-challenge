@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fetchEmployees } from '../api/employees';
 import type { Employee, EmployeeFilters } from '../types/employee';
+import { uniqueOptions, uniqueYearOptions } from '~/components/Employees/filterUtils';
 
 type UseEmployeesResult = {
   employees: Employee[];
@@ -39,11 +40,19 @@ export function useEmployees(): UseEmployeesResult {
     };
   }, [fetchCount]);
 
+  const filters = useMemo<EmployeeFilters>(() => ({
+    beruf: uniqueOptions(employees, 'beruf'),
+    plz: uniqueOptions(employees, 'plz'),
+    eintritt: uniqueYearOptions(employees, 'eintritt'),
+    ueberlassen: uniqueYearOptions(employees, 'ueberlassen'),
+    status: uniqueOptions(employees, 'status'),
+  }), [employees]);
+
   const handleRefetch = () => setFetchCount(c => c + 1);
 
   return {
     employees,
-    filters: null,
+    filters,
     isLoading,
     error,
     refetch: handleRefetch,

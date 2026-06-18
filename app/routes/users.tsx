@@ -16,7 +16,7 @@ import {
 } from '@zvoove/unity-ui';
 
 export default function Users() {
-  const { employees, isLoading, error, refetch } = useEmployees();
+  const { employees, filters, isLoading, error, refetch } = useEmployees();
   const { t } = useTranslation();
 
   if (isLoading) return <EmployeesSkeleton />;
@@ -29,7 +29,7 @@ export default function Users() {
         pageTitle="employees.pageTitle"
         pageDescription="employees.pageDescription"
       />
-      <EmployeesTable employees={employees} />
+      <EmployeesTable employees={employees} filters={filters} />
     </Stack>
   );
 }
