@@ -4,10 +4,11 @@ import {
   DashboardSkeleton,
   KpiBlock,
   OnboardingProgressBlock,
+  PageTitle,
   RecentActivityBlock,
   UpcomingEventsBlock,
 } from '../components';
-import { Stack, Grid, Typography, Button, InfoBox } from '@zvoove/unity-ui';
+import { Stack, Grid, Button, InfoBox } from '@zvoove/unity-ui';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -33,14 +34,11 @@ export default function Home() {
         align={{ minimum: 'flex-start', tablet: 'center' }}
         justify="space-between"
       >
-        {/* Page Title */}
-        <Stack gap="sm">
-          <Typography variant="display" size="sm" as="h1">
-            {t('dashboard.pageTitle')}
-          </Typography>
-          <Typography>{t('dashboard.pageDescription')}</Typography>
-        </Stack>
-        {/* Action Buttons */}
+        <PageTitle
+          pageTitle="dashboard.pageTitle"
+          pageDescription="dashboard.pageDescription"
+        />
+
         <Stack direction="row" wrap="wrap" gap="sm">
           <Button size="md" icon="add" as="a" href="/users" variant="outlined">
             {t('dashboard.actionButtons.action1')}

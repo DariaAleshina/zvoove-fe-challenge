@@ -21,7 +21,5 @@ export default function Users() {
   if (error) return <InfoBox message={error.message} />;
   if (!employees) return <InfoBox message="No data available" />;
 
-  console.log('isLoading: ', isLoading);
-  console.log('Employees data: ', employees);
   return null;
 }
