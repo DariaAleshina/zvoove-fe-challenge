@@ -11,7 +11,13 @@ type Props = {
   onSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function EmployeesTableFilters({ filters, activeFilters, handleFilterClick, search, onSearchChange }: Props) {
+export function EmployeesTableFilters({
+  filters,
+  activeFilters,
+  handleFilterClick,
+  search,
+  onSearchChange,
+}: Props) {
   const FILTER_CHIP_LABELS: Record<keyof EmployeeFilters, string> = {
     beruf: 'Beruf',
     plz: 'Postleitzahl',
