@@ -1,14 +1,17 @@
 import { Button, Chip, PopUpMenu, Stack, TextField } from '@zvoove/unity-ui';
 import type { PopUpMenuItem } from '@zvoove/unity-ui';
+import type { ChangeEvent } from 'react';
 import type { EmployeeFilters } from '../../mocked/types/employee';
 
 type Props = {
   filters: EmployeeFilters;
   activeFilters: Record<keyof EmployeeFilters, string>;
   handleFilterClick: (filterKey: keyof EmployeeFilters, value: string) => void;
+  search: string;
+  onSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function EmployeesTableFilters({ filters, activeFilters, handleFilterClick }: Props) {
+export function EmployeesTableFilters({ filters, activeFilters, handleFilterClick, search, onSearchChange }: Props) {
   const FILTER_CHIP_LABELS: Record<keyof EmployeeFilters, string> = {
     beruf: 'Beruf',
     plz: 'Postleitzahl',
@@ -39,6 +42,8 @@ export function EmployeesTableFilters({ filters, activeFilters, handleFilterClic
             icon="search"
             iconPosition="left"
             density="-4"
+            value={search}
+            onChange={onSearchChange}
           />
         </div>
         {(Object.keys(filters) as (keyof EmployeeFilters)[]).map(filterKey => {

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import type { ChangeEvent } from 'react';
 import type { Employee } from '~/mocked/types/employee';
 
 interface ActiveFilters {
@@ -13,6 +14,7 @@ interface ActiveFilters {
 interface UseEmployeeFiltersReturn {
   handleFilterClick: (filterKey: keyof ActiveFilters, value: string) => void;
   activeFilters: ActiveFilters;
+  handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const INITIAL_FILTERS: ActiveFilters = {
@@ -39,5 +41,9 @@ export function useEmployeeFilters(
 
   console.log('activeFilters: ', activeFilters);
 
-  return { handleFilterClick, activeFilters };
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setActiveFilters(prev => ({ ...prev, search: e.target.value }));
+  };
+
+  return { handleFilterClick, activeFilters, handleSearchChange };
 }
