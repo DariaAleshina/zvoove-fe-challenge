@@ -17,7 +17,10 @@
   "dashboard": {
     "pageTitle": "Übersicht",
     "pageDescription": "Willkommen zurück — hier sehen Sie die wichtigsten Kennzahlen und Aktivitäten Ihres Teams.",
-    "announcement": "3 neue Bewerbungen warten auf Ihre Prüfung. 2 Onboarding-Prozesse sind diese Woche fällig.",
+    "announcement": {
+      "applicationsAwaitingReview": "{{count}} neue Bewerbungen warten auf Ihre Prüfung.",
+      "onboardingProcessesDue": "{{count}} Onboarding-Prozesse sind diese Woche fällig."
+    },
     "actionButtons": {
       "action1": "Mitarbeiter anlegen",
       "action2": "Mitarbeitende"
@@ -37,10 +40,9 @@
       "newApplication": "hat eine neue Bewerbung eingereicht"
     },
     "time": {
-      "hoursAgo": "vor 2 Stunden",
+      "hoursAgo": "vor {{count}} Stunden",
       "yesterday": "gestern",
-      "daysAgo": "vor 2 Tagen",
-      "hoursAgo2": "vor 5 Stunden"
+      "daysAgo": "vor {{count}} Tagen"
     },
     "upcoming": {
       "title": "Anstehende Termine",

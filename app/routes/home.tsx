@@ -18,13 +18,8 @@ export default function Home() {
   if (error) return <InfoBox message={error.message} />;
   if (!dashboard) return <InfoBox message="No data available" />;
 
-  const {
-    announcementKey,
-    kpis,
-    activities,
-    upcomingEvents,
-    onboardingProgress,
-  } = dashboard;
+  const { announcement, kpis, activities, upcomingEvents, onboardingProgress } =
+    dashboard;
 
   return (
     <Stack gap="lg" padding="lg">
@@ -49,9 +44,10 @@ export default function Home() {
         </Stack>
       </Stack>
 
-      {/* TODO: make annoucement message dynamic */}
       <InfoBox
-        message={t(announcementKey)}
+        message={Object.keys(announcement)
+          .map((key) => t(`dashboard.announcement.${key}`, { count: announcement[key] }))
+          .join(' ')}
         variant="subtle"
         icon="info"
         elevated={false}

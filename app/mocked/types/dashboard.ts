@@ -13,7 +13,7 @@ export type DashboardActivity = {
   id: string;
   name: string;
   actionKey: string;
-  timeKey: string;
+  time: { key: string; count?: number };
 };
 
 export type DashboardUpcomingEvent = {
@@ -30,7 +30,7 @@ export type DashboardOnboardingStep = {
 };
 
 export type DashboardData = {
-  announcementKey: string;
+  announcement: Record<string, number>;
   kpis: DashboardKpi[];
   activities: DashboardActivity[];
   upcomingEvents: DashboardUpcomingEvent[];

@@ -62,7 +62,7 @@ export function RecentActivityBlock({
                   size="sm"
                   color="on-surface-variant"
                 >
-                  {t(activity.timeKey)}
+                  {t(`dashboard.time.${activity.time.key}`, { count: activity.time.count })}
                 </Typography>
               </Stack>
             </Stack>

@@ -17,7 +17,10 @@
   "dashboard": {
     "pageTitle": "Overview",
     "pageDescription": "Welcome back — see your team's key metrics and recent activity at a glance.",
-    "announcement": "3 new applications are awaiting review. 2 onboarding processes are due this week.",
+    "announcement": {
+      "applicationsAwaitingReview": "{{count}} new applications are awaiting review.",
+      "onboardingProcessesDue": "{{count}} onboarding processes are due this week."
+    },
     "actionButtons": {
       "action1": "Add employee",
       "action2": "Employees"
@@ -37,10 +40,9 @@
       "newApplication": "submitted a new application"
     },
     "time": {
-      "hoursAgo": "2 hours ago",
+      "hoursAgo": "{{count}} hours ago",
       "yesterday": "yesterday",
-      "daysAgo": "2 days ago",
-      "hoursAgo2": "5 hours ago"
+      "daysAgo": "{{count}} days ago"
     },
     "upcoming": {
       "title": "Upcoming events",

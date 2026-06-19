@@ -1,7 +1,10 @@
 import type { DashboardData } from '../types/dashboard';
 
 export const dashboardData: DashboardData = {
-  announcementKey: 'dashboard.announcement',
+  announcement: {
+    applicationsAwaitingReview: 3,
+    onboardingProcessesDue: 2,
+  },
   kpis: [
     {
       id: 'employees',
@@ -41,25 +44,25 @@ export const dashboardData: DashboardData = {
       id: '1',
       name: 'Alex Buckmaster',
       actionKey: 'dashboard.activity.signedContract',
-      timeKey: 'dashboard.time.hoursAgo',
+      time: { key: 'hoursAgo', count: 2 },
     },
     {
       id: '2',
       name: 'Ghaith Abaza',
       actionKey: 'dashboard.activity.completedOnboarding',
-      timeKey: 'dashboard.time.yesterday',
+      time: { key: 'yesterday' },
     },
     {
       id: '3',
       name: 'Jonas Abt',
       actionKey: 'dashboard.activity.submittedLeave',
-      timeKey: 'dashboard.time.daysAgo',
+      time: { key: 'daysAgo', count: 2 },
     },
     {
       id: '4',
       name: 'Sarah Klein',
       actionKey: 'dashboard.activity.newApplication',
-      timeKey: 'dashboard.time.hoursAgo2',
+      time: { key: 'hoursAgo', count: 5 },
     },
   ],
   upcomingEvents: [
