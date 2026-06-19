@@ -1,6 +1,7 @@
 import { Button, Chip, PopUpMenu, Stack, TextField } from '@zvoove/unity-ui';
 import type { PopUpMenuItem } from '@zvoove/unity-ui';
 import type { ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { EmployeeFilters } from '../../mocked/types/employee';
 
 type Props = {
@@ -18,12 +19,14 @@ export function EmployeesTableFilters({
   search,
   onSearchChange,
 }: Props) {
+  const { t } = useTranslation();
+
   const FILTER_CHIP_LABELS: Record<keyof EmployeeFilters, string> = {
-    beruf: 'Beruf',
-    plz: 'Postleitzahl',
-    eintritt: 'Eintrittsdatum',
-    ueberlassen: 'Überlassen bis',
-    status: 'Status',
+    beruf: t('employees.table.filters.beruf'),
+    plz: t('employees.table.filters.plz'),
+    eintritt: t('employees.table.filters.eintritt'),
+    ueberlassen: t('employees.table.filters.ueberlassen'),
+    status: t('employees.table.filters.status'),
   };
 
   return (
@@ -55,7 +58,7 @@ export function EmployeesTableFilters({
         {(Object.keys(filters) as (keyof EmployeeFilters)[]).map(filterKey => {
           const items: PopUpMenuItem[] = filters[filterKey].map(opt => ({
             id: opt.value,
-            label: opt.label,
+            label: t(opt.label),
           }));
           return (
             <PopUpMenu
@@ -77,7 +80,7 @@ export function EmployeesTableFilters({
         })}
       </Stack>
       <Button variant="filled" size="md">
-        Mitarbeiter anlegen
+        {t('employees.table.actions.createEmployee')}
       </Button>
     </Stack>
   );

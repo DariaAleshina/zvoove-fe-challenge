@@ -1,20 +1,23 @@
-import { Button, PopUpMenu, type PopUpMenuItem } from '@zvoove/unity-ui';
-
-const MENU_ITEMS: PopUpMenuItem[] = [
-  { id: 'edit', label: 'Bearbeiten', icon: 'edit' },
-  { id: 'details', label: 'Details anzeigen', icon: 'show' },
-  { id: 'divider', label: '', isDivider: true },
-  { id: 'delete', label: 'Löschen', icon: 'delete' },
-];
+import { Button, PopUpMenu } from '@zvoove/unity-ui';
+import { useTranslation } from 'react-i18next';
 
 export function ActionsCell() {
+  const { t } = useTranslation();
+
+  const menuItems = [
+    { id: 'edit',    label: t('employees.table.actions.edit'),        icon: 'edit' as const },
+    { id: 'details', label: t('employees.table.actions.viewDetails'), icon: 'show' as const },
+    { id: 'divider', label: '', isDivider: true },
+    { id: 'delete',  label: t('employees.table.actions.delete'),      icon: 'delete' as const },
+  ];
+
   return (
-    <PopUpMenu items={MENU_ITEMS} placement="bottom-right" density="-4">
+    <PopUpMenu items={menuItems} placement="bottom-right" density="-4">
       <Button
         variant="text"
         icon="more-vertical"
         size="md"
-        aria-label="Aktionen"
+        aria-label={t('employees.table.columns.actions')}
       />
     </PopUpMenu>
   );

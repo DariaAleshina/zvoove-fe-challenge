@@ -65,6 +65,57 @@
   },
   "employees": {
     "pageTitle": "Employees",
-    "pageDescription": "View and manage all employees here."
+    "pageDescription": "View and manage all employees here.",
+    "table": {
+      "title": "All Employees ({{count}})",
+      "columns": {
+        "nachname": "Last Name",
+        "vorname": "First Name",
+        "beruf": "Occupation",
+        "telefon": "Phone",
+        "plz": "Postal Code",
+        "eintritt": "Start Date",
+        "ueberlassen": "Assigned Until",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "filters": {
+        "beruf": "Occupation",
+        "plz": "Postal Code",
+        "eintritt": "Start Date",
+        "ueberlassen": "Assigned Until",
+        "status": "Status"
+      },
+      "actions": {
+        "createEmployee": "Add Employee",
+        "export": "Export",
+        "import": "Import",
+        "settings": "Settings",
+        "edit": "Edit",
+        "viewDetails": "View Details",
+        "delete": "Delete"
+      },
+      "status": {
+        "mitarbeiter": "Employee",
+        "bewerber": "Applicant",
+        "zukuenftig": "Future Employee",
+        "bewerber-cockpit": "Applicant (from Cockpit)",
+        "ehemalig": "Former Employee"
+      }
+    },
+    "occupations": {
+      "forkliftOperator": "Forklift Operator",
+      "electrician": "Electrician",
+      "warehouseWorker": "Warehouse Worker",
+      "picker": "Order Picker",
+      "productionHelper": "Production Helper",
+      "productionTeamLead": "Production Team Lead",
+      "welder": "Welder",
+      "qualityInspector": "Quality Inspector",
+      "assembler": "Assembler",
+      "machineOperator": "Machine Operator",
+      "packer": "Packer",
+      "logisticsSpecialist": "Logistics Specialist"
+    }
   }
 }

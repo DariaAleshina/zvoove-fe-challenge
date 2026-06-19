@@ -65,6 +65,57 @@
   },
   "employees": {
     "pageTitle": "Mitarbeitende",
-    "pageDescription": "Hier können Sie alle Mitarbeitenden anzeigen und verwalten."
+    "pageDescription": "Hier können Sie alle Mitarbeitenden anzeigen und verwalten.",
+    "table": {
+      "title": "Alle Mitarbeitenden ({{count}})",
+      "columns": {
+        "nachname": "Name",
+        "vorname": "Vorname",
+        "beruf": "Beruf",
+        "telefon": "Telefonnummer",
+        "plz": "Postleitzahl",
+        "eintritt": "Eintrittsdatum",
+        "ueberlassen": "Überlassen bis",
+        "status": "Status",
+        "actions": "Aktionen"
+      },
+      "filters": {
+        "beruf": "Beruf",
+        "plz": "Postleitzahl",
+        "eintritt": "Eintrittsdatum",
+        "ueberlassen": "Überlassen bis",
+        "status": "Status"
+      },
+      "actions": {
+        "createEmployee": "Mitarbeiter anlegen",
+        "export": "Exportieren",
+        "import": "Importieren",
+        "settings": "Einstellungen",
+        "edit": "Bearbeiten",
+        "viewDetails": "Details anzeigen",
+        "delete": "Löschen"
+      },
+      "status": {
+        "mitarbeiter": "Mitarbeiter",
+        "bewerber": "Bewerber",
+        "zukuenftig": "zuk. Mitarbeiter",
+        "bewerber-cockpit": "Bewerber (aus Cockpit)",
+        "ehemalig": "ehem. Mitarbeiter"
+      }
+    },
+    "occupations": {
+      "forkliftOperator": "Staplerfahrer/in",
+      "electrician": "Elektriker/in",
+      "warehouseWorker": "Lagerist/in",
+      "picker": "Kommissionierer/in",
+      "productionHelper": "Produktionshelfer/in",
+      "productionTeamLead": "Teamleiter/in Produktion",
+      "welder": "Schweißer/in",
+      "qualityInspector": "Qualitätsprüfer/in",
+      "assembler": "Monteur/in",
+      "machineOperator": "Maschinenbediener/in",
+      "packer": "Verpacker/in",
+      "logisticsSpecialist": "Fachkraft Lagerlogistik"
+    }
   }
 }

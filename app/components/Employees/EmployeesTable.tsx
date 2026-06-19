@@ -1,4 +1,5 @@
 import { Table } from '@zvoove/unity-ui';
+import { useTranslation } from 'react-i18next';
 import type { Employee, EmployeeFilters } from '~/mocked/types/employee';
 import { NameCell } from './NameCell';
 import { StatusCell } from './StatusCell';
@@ -10,27 +11,28 @@ import { useEmployeeFilters } from '~/mocked/hooks/useEmployeeFilters';
 type Props = { employees: Employee[]; filters: EmployeeFilters };
 
 export function EmployeesTable({ employees, filters }: Props) {
+  const { t } = useTranslation();
   const { handleFilterClick, activeFilters, handleSearchChange, filteredEmployees } = useEmployeeFilters(employees);
 
-  const tableTitle = `Alle Mitarbeitenden (${filteredEmployees.length})`;
+  const tableTitle = t('employees.table.title', { count: filteredEmployees.length });
 
   const columns = [
-    { id: 'nachname', label: 'Name', orderable: true },
-    { id: 'vorname', label: 'Vorname' },
-    { id: 'beruf', label: 'Beruf' },
-    { id: 'telefon', label: 'Telefonnummer' },
-    { id: 'plz', label: 'Postleitzahl' },
-    { id: 'eintritt', label: 'Eintrittsdatum' },
-    { id: 'ueberlassen', label: 'Überlassen bis' },
-    { id: 'status', label: 'Status' },
-    { id: 'aktionen', label: 'Aktionen', align: 'right' as const },
+    { id: 'nachname', label: t('employees.table.columns.nachname'), orderable: true },
+    { id: 'vorname', label: t('employees.table.columns.vorname') },
+    { id: 'beruf', label: t('employees.table.columns.beruf') },
+    { id: 'telefon', label: t('employees.table.columns.telefon') },
+    { id: 'plz', label: t('employees.table.columns.plz') },
+    { id: 'eintritt', label: t('employees.table.columns.eintritt') },
+    { id: 'ueberlassen', label: t('employees.table.columns.ueberlassen') },
+    { id: 'status', label: t('employees.table.columns.status') },
+    { id: 'aktionen', label: t('employees.table.columns.actions'), align: 'right' as const },
   ];
 
   const data = filteredEmployees.map(emp => ({
     id: emp.id,
     nachname: <NameCell nachname={emp.nachname} image={emp.image ?? null} />,
     vorname: emp.vorname,
-    beruf: emp.beruf,
+    beruf: t(emp.beruf),
     telefon: emp.telefon,
     plz: emp.plz,
     eintritt: emp.eintritt,
