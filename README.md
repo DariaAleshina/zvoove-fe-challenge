@@ -6,11 +6,13 @@
 
 `DashboardData` originally had `announcementKey: string` — a translation key returned by the backend, pointing at a some hardcoded string with hardcoded numbers on frontend side. As it is supposed to be a dynamic data coming fron backend, this part was refactored: the field is now `announcement: Record<string, number>`, where each key maps to a count. The frontend loops over those keys, resolves each via `t(`dashboard.announcement.${key}`, { count })`, and joins the sentences — so new announcement types require only a backend change and a new locale key.
 
-
-
 ### Activity Timestamps (departure from original spec)
 
 `DashboardActivity` had a `timeKey: string` pointing to pre-formatted strings like `"2 hours ago"` with hardcoded numbers. Refactored to `time: { key: string; count?: number }` so the number is data and the label is resolved via i18next interpolation — also removing the duplicate `hoursAgo2` key. In a real app this field would likely be a timestamp, with the relative label computed on the frontend.
+
+### Employees Table — Full i18n (departure from original spec)
+
+All employee table strings (column headers, filter chips, actions, status labels, and occupation names) were hardcoded in German. Locale files were extended with `employees.table.*` and `employees.occupations.*` keys, mock data `beruf` fields and filter option labels/values replaced with translation keys (following the `dashboard.ts` pattern), and `useTranslation` wired into all five table components.
 
 ---
 
