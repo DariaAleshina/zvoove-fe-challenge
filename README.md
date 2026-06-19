@@ -14,6 +14,19 @@
 
 All employee table strings (column headers, filter chips, actions, status labels, and occupation names) were hardcoded in German. Locale files were extended with `employees.table.*` and `employees.occupations.*` keys, mock data `beruf` fields and filter option labels/values replaced with translation keys (following the `dashboard.ts` pattern), and `useTranslation` wired into all five table components.
 
+### Employees Table — Empty State i18n
+
+The `Table` component from `@zvoove/unity-ui` shows a built-in German fallback ("Keine Daten gefunden") when the data array is empty. Overridden via the `emptyState` prop using a translated string (`employees.table.emptyState`) so the message respects the active locale.
+
+### Task Coverage
+
+| Task | Requirements | Status |
+|---|---|---|
+| **0** — Hooks | `useDashboard` + `useEmployees` call mock APIs, manage loading/error/data, expose `refetch` | ✅ |
+| **1** — Dashboard | Header + action buttons, announcement InfoBox, KPI grid (1/2/4 cols), activity list, upcoming events, onboarding progress, skeleton, all text via `t()` | ✅ |
+| **2** — Employees table | All 9 columns (name+avatar, vorname, beruf, telefon, plz, eintritt, ueberlassen, status Tag, actions PopUpMenu), skeleton, translations | ✅ |
+| **3** — Filters | Text search (nachname/vorname, case-insensitive), 5 chip filters with AND logic, live count in title, toggle deselect | ✅ |
+
 ---
 
 ## Context

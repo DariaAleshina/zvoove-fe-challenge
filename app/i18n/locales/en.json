@@ -68,6 +68,7 @@
     "pageDescription": "View and manage all employees here.",
     "table": {
       "title": "All Employees ({{count}})",
+      "emptyState": "No employees found",
       "columns": {
         "nachname": "Last Name",
         "vorname": "First Name",

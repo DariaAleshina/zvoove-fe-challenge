@@ -3,17 +3,7 @@ import { useEmployees } from '../mocked/hooks/useEmployees';
 import { EmployeesSkeleton, EmployeesTable } from '~/components/Employees';
 import { PageTitle } from '~/components';
 
-import {
-  Stack,
-  Typography,
-  Avatar,
-  Tag,
-  Button,
-  PopUpMenu,
-  Chip,
-  TextField,
-  InfoBox,
-} from '@zvoove/unity-ui';
+import { Stack, InfoBox } from '@zvoove/unity-ui';
 
 export default function Users() {
   const { employees, filters, isLoading, error, refetch } = useEmployees();

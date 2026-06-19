@@ -68,6 +68,7 @@
     "pageDescription": "Hier können Sie alle Mitarbeitenden anzeigen und verwalten.",
     "table": {
       "title": "Alle Mitarbeitenden ({{count}})",
+      "emptyState": "Keine Mitarbeitenden gefunden",
       "columns": {
         "nachname": "Name",
         "vorname": "Vorname",

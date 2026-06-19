@@ -44,6 +44,7 @@ export function EmployeesTable({ employees, filters }: Props) {
   return (
     <Table
       title={tableTitle}
+      emptyState={t('employees.table.emptyState')}
       actions={<EmployeeTableActions />}
       filters={
         <EmployeesTableFilters
