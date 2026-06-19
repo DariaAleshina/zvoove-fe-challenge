@@ -66,7 +66,7 @@ export function useEmployeeFilters(
         return false;
       if (
         activeFilters.ueberlassen &&
-        emp.ueberlassen.split('.')[2] !== activeFilters.ueberlassen
+        emp.ueberlassen.split('.')[2] > activeFilters.ueberlassen
       )
         return false;
       return true;
