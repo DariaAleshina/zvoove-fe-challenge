@@ -8,10 +8,11 @@ import {
   RecentActivityBlock,
   UpcomingEventsBlock,
 } from '../components';
-import { Stack, Grid, Button, InfoBox } from '@zvoove/unity-ui';
+import { Stack, Grid, Button, InfoBox, useBreakpoint } from '@zvoove/unity-ui';
 
 export default function Home() {
   const { t } = useTranslation();
+  const { isSmallerThan } = useBreakpoint();
   const { dashboard, isLoading, error, refetch } = useDashboard();
 
   if (isLoading) return <DashboardSkeleton />;
@@ -22,19 +23,25 @@ export default function Home() {
     dashboard;
 
   return (
-    <Stack gap="lg" padding="lg">
+    <Stack gap="lg" padding="lg" align="stretch" width="100%">
       <Stack
         direction={{ minimum: 'column', tablet: 'row' }}
         gap="md"
-        align={{ minimum: 'flex-start', tablet: 'center' }}
+        align="center"
         justify="space-between"
+        width="100%"
       >
         <PageTitle
           pageTitle="dashboard.pageTitle"
           pageDescription="dashboard.pageDescription"
         />
 
-        <Stack direction="row" wrap="wrap" gap="sm">
+        <Stack
+          direction="row"
+          wrap="wrap"
+          gap="sm"
+          justify={isSmallerThan('tablet') ? 'flex-start' : 'flex-end'}
+        >
           <Button size="md" icon="add" as="a" href="/users" variant="outlined">
             {t('dashboard.actionButtons.action1')}
           </Button>
@@ -46,7 +53,9 @@ export default function Home() {
 
       <InfoBox
         message={Object.keys(announcement)
-          .map((key) => t(`dashboard.announcement.${key}`, { count: announcement[key] }))
+          .map(key =>
+            t(`dashboard.announcement.${key}`, { count: announcement[key] }),
+          )
           .join(' ')}
         variant="subtle"
         icon="info"
