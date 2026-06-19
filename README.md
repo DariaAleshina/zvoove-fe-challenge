@@ -1,31 +1,48 @@
 # zvoove Frontend Code Challenge
 
-## Implementation Notes (Daria Aleshina)
-
-### Dynamic Announcement (departure from original spec)
-
-`DashboardData` originally had `announcementKey: string` — a translation key returned by the backend, pointing at a some hardcoded string with hardcoded numbers on frontend side. As it is supposed to be a dynamic data coming fron backend, this part was refactored: the field is now `announcement: Record<string, number>`, where each key maps to a count. The frontend loops over those keys, resolves each via `t(`dashboard.announcement.${key}`, { count })`, and joins the sentences — so new announcement types require only a backend change and a new locale key.
-
-### Activity Timestamps (departure from original spec)
-
-`DashboardActivity` had a `timeKey: string` pointing to pre-formatted strings like `"2 hours ago"` with hardcoded numbers. Refactored to `time: { key: string; count?: number }` so the number is data and the label is resolved via i18next interpolation — also removing the duplicate `hoursAgo2` key. In a real app this field would likely be a timestamp, with the relative label computed on the frontend.
-
-### Employees Table — Full i18n (departure from original spec)
-
-All employee table strings (column headers, filter chips, actions, status labels, and occupation names) were hardcoded in German. Locale files were extended with `employees.table.*` and `employees.occupations.*` keys, mock data `beruf` fields and filter option labels/values replaced with translation keys (following the `dashboard.ts` pattern), and `useTranslation` wired into all five table components.
-
-### Employees Table — Empty State i18n
-
-The `Table` component from `@zvoove/unity-ui` shows a built-in German fallback ("Keine Daten gefunden") when the data array is empty. Overridden via the `emptyState` prop using a translated string (`employees.table.emptyState`) so the message respects the active locale.
+## Implementation Notes & Tracker (Daria Aleshina)
 
 ### Task Coverage
 
-| Task | Requirements | Status |
-|---|---|---|
-| **0** — Hooks | `useDashboard` + `useEmployees` call mock APIs, manage loading/error/data, expose `refetch` | ✅ |
-| **1** — Dashboard | Header + action buttons, announcement InfoBox, KPI grid (1/2/4 cols), activity list, upcoming events, onboarding progress, skeleton, all text via `t()` | ✅ |
-| **2** — Employees table | All 9 columns (name+avatar, vorname, beruf, telefon, plz, eintritt, ueberlassen, status Tag, actions PopUpMenu), skeleton, translations | ✅ |
-| **3** — Filters | Text search (nachname/vorname, case-insensitive), 5 chip filters with AND logic, live count in title, toggle deselect | ✅ |
+| Task                    | Requirements                                                                                                                                            | Status |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| **0** — Hooks           | `useDashboard` + `useEmployees` call mock APIs, manage loading/error/data, expose `refetch`                                                             | ✅     |
+| **1** — Dashboard       | Header + action buttons, announcement InfoBox, KPI grid (1/2/4 cols), activity list, upcoming events, onboarding progress, skeleton, all text via `t()` | ✅     |
+| **2** — Employees table | All 9 columns (name+avatar, vorname, beruf, telefon, plz, eintritt, ueberlassen, status Tag, actions PopUpMenu), skeleton, translations                 | ✅     |
+| **3** — Filters         | Text search (nachname/vorname, case-insensitive), 5 chip filters with AND logic, live count in title, toggle deselect                                   | ✅     |
+
+### Bonus Points Covered
+
+| Bonus item                         | Status | Notes                                                                                      |
+| ---------------------------------- | ------ | ------------------------------------------------------------------------------------------ |
+| Responsive layouts                 | ✅     |
+| Separation of concerns             | ✅     | e.g. Filter logic extracted into `useEmployeeFilters` custom hook                          |
+| Empty / error states               | ✅     | `InfoBox` on fetch error, `Skeleton` on loading, translated `emptyState` on filtered table |
+| Use of component library props API | ✅     |
+
+### Notes on Deviation from Original Spec
+
+#### Dynamic Announcement
+
+`DashboardData` originally had `announcementKey: string` — a translation key returned by the backend, implying at some hardcoded string with hardcoded numbers on frontend side. As it is supposed to be a dynamic data coming fron backend, this part was refactored: the field is now `announcement: Record<string, number>`, where each key maps to a count. The frontend loops over those keys, resolves each via `t(`dashboard.announcement.${key}`, { count })`, and joins the sentences — so new announcement types require only a backend change and a new locale key.
+
+#### KPI Change Color
+
+`DashboardKpi` originally had `changeColor: "green" | "yellow" | "steel-blue" | "pink"`. Changed to `'dark-green' | 'dark-yellow' | 'dark-steel-blue' | 'error'` to match the reference design (more pronounced / visible colors).
+
+#### Recent Activity Timestamps
+
+Refactored to simulate that timestamp comes from backend with the label is resolved via i18next interpolation. In a real app this field would likely be a timestamp, with the relative label computed on the frontend.
+
+#### Employees Table — Full i18n
+
+All employee table data strings coming from API (column headers, filter chips, actions, status labels, and occupation names) were hardcoded in German. Locale files were extended with `employees.table.*` and `employees.occupations.*` keys, mock data `beruf` fields and filter option labels/values replaced with translation keys (following the `dashboard.ts` pattern), and `useTranslation` wired into all five table components.
+
+### AI Usage Disclaimer
+
+This solution was built with **Claude Code** (Anthropic's CLI for Claude). Sessions transcripts are available in [`AI_SESSION.md`](AI_SESSION.md).
+
+The provided Unity UI component skills & rules were used as context throughout the sessions.
 
 ---
 
