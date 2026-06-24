@@ -43,7 +43,7 @@ export function EmployeesTableFilters({
         gap="sm"
         wrap="wrap"
       >
-        <div className="m-w-1/5">
+        <div>
           <TextField
             label="Search"
             hideLabel={true}
