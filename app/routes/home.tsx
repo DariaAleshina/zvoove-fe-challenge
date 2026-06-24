@@ -23,13 +23,12 @@ export default function Home() {
     dashboard;
 
   return (
-    <Stack gap="lg" padding="lg" align="stretch" width="100%">
+    <Stack gap="lg" padding="lg">
       <Stack
         direction={{ minimum: 'column', tablet: 'row' }}
         gap="md"
         align="center"
         justify="space-between"
-        width="100%"
       >
         <PageTitle
           pageTitle="dashboard.pageTitle"
