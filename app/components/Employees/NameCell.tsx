@@ -2,7 +2,7 @@ import { Avatar, Stack } from '@zvoove/unity-ui';
 
 export type NameCellProps = {
   nachname: string;
-  image?: string | null;
+  image?: string;
 };
 
 export function NameCell({ nachname, image }: NameCellProps) {
