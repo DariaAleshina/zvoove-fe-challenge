@@ -11,7 +11,7 @@ export default function Users() {
 
   if (isLoading) return <EmployeesSkeleton />;
   if (error) return <InfoBox message={error.message} />;
-  if (!employees) return <InfoBox message="No data available" />;
+  if (!employees) return <InfoBox message={t('common.noData')} />;
 
   return (
     <Stack gap="lg" padding="lg">

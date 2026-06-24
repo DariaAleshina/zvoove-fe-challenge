@@ -1,4 +1,7 @@
 {
+  "common": {
+    "noData": "No data available"
+  },
   "nav": {
     "home": "Home",
     "users": "Users",

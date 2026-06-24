@@ -17,7 +17,7 @@ export default function Home() {
 
   if (isLoading) return <DashboardSkeleton />;
   if (error) return <InfoBox message={error.message} />;
-  if (!dashboard) return <InfoBox message="No data available" />;
+  if (!dashboard) return <InfoBox message={t('common.noData')} />;
 
   const { announcement, kpis, activities, upcomingEvents, onboardingProgress } =
     dashboard;
