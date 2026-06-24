@@ -73,6 +73,7 @@ export function EmployeesTableFilters({
               <Chip
                 label={FILTER_CHIP_LABELS[filterKey as keyof EmployeeFilters]}
                 type="filter"
+                variant={activeFilters[filterKey] ? 'secondary' : 'primary'}
                 showDropdownIcon={true}
               />
             </PopUpMenu>
