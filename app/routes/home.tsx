@@ -23,7 +23,7 @@ export default function Home() {
     dashboard;
 
   return (
-    <Stack gap="lg" padding="lg">
+    <Stack gap="lg">
       <Stack
         direction={{ minimum: 'column', tablet: 'row' }}
         gap="md"

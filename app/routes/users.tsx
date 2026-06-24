@@ -14,7 +14,7 @@ export default function Users() {
   if (!employees) return <InfoBox message={t('common.noData')} />;
 
   return (
-    <Stack gap="lg" padding="lg">
+    <Stack gap="lg">
       <PageTitle
         pageTitle="employees.pageTitle"
         pageDescription="employees.pageDescription"
