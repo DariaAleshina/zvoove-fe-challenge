@@ -6,7 +6,7 @@ import { PageTitle } from '~/components';
 import { Stack, InfoBox } from '@zvoove/unity-ui';
 
 export default function Users() {
-  const { employees, filters, isLoading, error, refetch } = useEmployees();
+  const { employees, filters, isLoading, error } = useEmployees();
   const { t } = useTranslation();
 
   if (isLoading) return <EmployeesSkeleton />;
