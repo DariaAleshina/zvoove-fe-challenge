@@ -1,4 +1,7 @@
 {
+  "common": {
+    "noData": "Keine Daten verfügbar"
+  },
   "nav": {
     "home": "Startseite",
     "users": "Benutzer",

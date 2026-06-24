@@ -43,7 +43,7 @@ export function EmployeesTableFilters({
         gap="sm"
         wrap="wrap"
       >
-        <div className="m-w-1/5">
+        <div>
           <TextField
             label="Search"
             hideLabel={true}
@@ -73,6 +73,7 @@ export function EmployeesTableFilters({
               <Chip
                 label={FILTER_CHIP_LABELS[filterKey as keyof EmployeeFilters]}
                 type="filter"
+                variant={activeFilters[filterKey] ? 'secondary' : 'primary'}
                 showDropdownIcon={true}
               />
             </PopUpMenu>

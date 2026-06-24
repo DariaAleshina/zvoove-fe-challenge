@@ -6,15 +6,15 @@ import { PageTitle } from '~/components';
 import { Stack, InfoBox } from '@zvoove/unity-ui';
 
 export default function Users() {
-  const { employees, filters, isLoading, error, refetch } = useEmployees();
+  const { employees, filters, isLoading, error } = useEmployees();
   const { t } = useTranslation();
 
   if (isLoading) return <EmployeesSkeleton />;
   if (error) return <InfoBox message={error.message} />;
-  if (!employees) return <InfoBox message="No data available" />;
+  if (!employees) return <InfoBox message={t('common.noData')} />;
 
   return (
-    <Stack gap="lg" padding="lg">
+    <Stack gap="lg">
       <PageTitle
         pageTitle="employees.pageTitle"
         pageDescription="employees.pageDescription"

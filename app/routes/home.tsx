@@ -17,19 +17,18 @@ export default function Home() {
 
   if (isLoading) return <DashboardSkeleton />;
   if (error) return <InfoBox message={error.message} />;
-  if (!dashboard) return <InfoBox message="No data available" />;
+  if (!dashboard) return <InfoBox message={t('common.noData')} />;
 
   const { announcement, kpis, activities, upcomingEvents, onboardingProgress } =
     dashboard;
 
   return (
-    <Stack gap="lg" padding="lg" align="stretch" width="100%">
+    <Stack gap="lg">
       <Stack
         direction={{ minimum: 'column', tablet: 'row' }}
         gap="md"
         align="center"
         justify="space-between"
-        width="100%"
       >
         <PageTitle
           pageTitle="dashboard.pageTitle"

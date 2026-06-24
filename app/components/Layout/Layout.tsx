@@ -145,7 +145,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               </Stack>
             }
           >
-            <div className="overflow-y-auto h-full">{children}</div>
+            <div className="overflow-y-auto h-full p-lg">{children}</div>
           </Card>
         </div>
       </Grid>

@@ -12,12 +12,23 @@ type Props = { employees: Employee[]; filters: EmployeeFilters };
 
 export function EmployeesTable({ employees, filters }: Props) {
   const { t } = useTranslation();
-  const { handleFilterClick, activeFilters, handleSearchChange, filteredEmployees } = useEmployeeFilters(employees);
+  const {
+    handleFilterClick,
+    activeFilters,
+    handleSearchChange,
+    filteredEmployees,
+  } = useEmployeeFilters(employees);
 
-  const tableTitle = t('employees.table.title', { count: filteredEmployees.length });
+  const tableTitle = t('employees.table.title', {
+    count: filteredEmployees.length,
+  });
 
   const columns = [
-    { id: 'nachname', label: t('employees.table.columns.nachname'), orderable: true },
+    {
+      id: 'nachname',
+      label: t('employees.table.columns.nachname'),
+      orderable: true,
+    },
     { id: 'vorname', label: t('employees.table.columns.vorname') },
     { id: 'beruf', label: t('employees.table.columns.beruf') },
     { id: 'telefon', label: t('employees.table.columns.telefon') },
@@ -25,12 +36,16 @@ export function EmployeesTable({ employees, filters }: Props) {
     { id: 'eintritt', label: t('employees.table.columns.eintritt') },
     { id: 'ueberlassen', label: t('employees.table.columns.ueberlassen') },
     { id: 'status', label: t('employees.table.columns.status') },
-    { id: 'aktionen', label: t('employees.table.columns.actions'), align: 'right' as const },
+    {
+      id: 'aktionen',
+      label: t('employees.table.columns.actions'),
+      align: 'right' as const,
+    },
   ];
 
   const data = filteredEmployees.map(emp => ({
     id: emp.id,
-    nachname: <NameCell nachname={emp.nachname} image={emp.image ?? null} />,
+    nachname: <NameCell nachname={emp.nachname} image={emp.image} />,
     vorname: emp.vorname,
     beruf: t(emp.beruf),
     telefon: emp.telefon,
