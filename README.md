@@ -2,6 +2,8 @@
 
 ## Implementation Notes & Tracker (Daria Aleshina)
 
+### [LIVE DEMO](https://zvoove-fe-challenge-daria-aleshina.vercel.app/)
+
 ### Task Coverage
 
 | Task                    | Requirements                                                                                                                                            | Status |
